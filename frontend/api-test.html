@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Communication Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>API Communication Test</h1>
+    
+    <button id="testButton">Test API Communication</button>
+    <button id="resetButton">Reset Test</button>
+    
+    <div id="results"></div>
+
+    <script>
+        let sessionId = null;
+        
+        document.getElementById('testButton').addEventListener('click', async () => {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            
+            try {
+                // Test 1: Root endpoint
+                const rootResponse = await fetch('http://localhost:3002/');
+                const rootData = await rootResponse.json();
+                addResult('Test 1: Root endpoint', rootData.message, rootResponse.ok);
+                
+                // Test 2: Send message
+                const messageResponse = await fetch('http://localhost:3002/api/chat/message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'How do I reset my password?',
+                        sessionId: sessionId
+                    })
+                });
+                
+                const messageData = await messageResponse.json();
+                addResult('Test 2: Send message', messageData.response, messageResponse.ok);
+                
+                if (messageResponse.ok) {
+                    sessionId = messageData.sessionId;
+                }
+                
+                // Test 3: Get history
+                if (sessionId) {
+                    const historyResponse = await fetch(`http://localhost:3002/api/chat/history/${sessionId}`);
+                    const historyData = await historyResponse.json();
+                    addResult('Test 3: Get history', `Retrieved ${historyData.messages.length} messages`, historyResponse.ok);
+                }
+                
+                addResult('Overall', 'All tests completed successfully!', true);
+            } catch (error) {
+                addResult('Error', error.message, false);
+                console.error('Error:', error);
+            }
+        });
+        
+        document.getElementById('resetButton').addEventListener('click', () => {
+            sessionId = null;
+            document.getElementById('results').innerHTML = '';
+        });
+        
+        function addResult(testName, message, success) {
+            const resultsDiv = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${success ? 'success' : 'error'}`;
+            resultDiv.innerHTML = `<strong>${testName}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+    </script>
+</body>
+</html>

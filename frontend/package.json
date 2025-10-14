@@ -1,0 +1,15 @@
+{
+  "name": "aicustomerbot-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for AI Customer Support Bot",
+  "scripts": {
+    "dev": "serve .",
+    "start": "serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "keywords": ["ai", "customer-support", "chatbot", "frontend"],
+  "author": "AI Customer Bot Team",
+  "license": "MIT"
+}

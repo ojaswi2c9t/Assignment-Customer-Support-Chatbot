@@ -1,0 +1,27 @@
+{
+  "name": "aicustomerbot-demo",
+  "version": "1.0.0",
+  "description": "Demo script for AI Customer Support Bot",
+  "main": "demo.js",
+  "scripts": {
+    "demo": "node demo.js"
+  },
+  "dependencies": {
+    "axios": "^1.12.2",
+    "dotenv": "^17.2.3",
+    "openai": "^6.2.0",
+    "serve": "^14.2.5"
+  },
+  "keywords": [
+    "ai",
+    "customer-support",
+    "chatbot",
+    "demo"
+  ],
+  "author": "AI Customer Bot Team",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+  }
+}

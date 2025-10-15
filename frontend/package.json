@@ -1,15 +1,17 @@
 {
-  "name": "aicustomerbot-frontend",
+  "name": "unthinkable-support-chatbot-frontend",
   "version": "1.0.0",
-  "description": "Frontend for AI Customer Support Bot",
+  "description": "Unthinkable Support Chatbot Frontend - Web interface for customer support interactions",
+  "main": "script.js",
   "scripts": {
-    "dev": "serve .",
-    "start": "serve ."
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "devDependencies": {
-    "serve": "^14.2.0"
-  },
-  "keywords": ["ai", "customer-support", "chatbot", "frontend"],
-  "author": "AI Customer Bot Team",
-  "license": "MIT"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "http-proxy-middleware": "^3.0.5"
+  }
 }

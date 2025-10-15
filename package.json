@@ -1,27 +1,22 @@
 {
-  "name": "aicustomerbot-demo",
+  "name": "unthinkable-support-chatbot",
   "version": "1.0.0",
-  "description": "Demo script for AI Customer Support Bot",
-  "main": "demo.js",
+  "description": "Unthinkable Support Chatbot - Simulates customer support interactions using AI for FAQs and escalation scenarios.",
+  "main": "index.js",
   "scripts": {
-    "demo": "node demo.js"
+    "start": "node backend/server.js",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   },
   "dependencies": {
-    "axios": "^1.12.2",
-    "dotenv": "^17.2.3",
-    "openai": "^6.2.0",
-    "serve": "^14.2.5"
-  },
-  "keywords": [
-    "ai",
-    "customer-support",
-    "chatbot",
-    "demo"
-  ],
-  "author": "AI Customer Bot Team",
-  "license": "MIT",
-  "devDependencies": {
-    "jest": "^30.2.0",
-    "supertest": "^7.1.4"
+    "dotenv": "^17.2.3"
   }
 }

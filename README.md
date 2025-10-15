@@ -2,6 +2,8 @@
 
 This project simulates an AI-powered customer support chatbot. It includes a backend API with REST endpoints and a frontend interface with a chatbot and customer profiles.
 
+# DEMO VEDIO : https://drive.google.com/file/d/1JaBijSPPi79Ol9XpGHUs-fA8O9QQpWwq/view?usp=sharing
+
 ## Features
 
 - RESTful API backend built with Node.js and Express
